@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba de Lenguaje</title>
+<style>
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #333;
+  text-align: center;
+}
+header {
+  background: #4a6fa5;
+  padding: 1rem;
+  color: white;
+}
+.card {
+  background: white;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+button {
+  background: #4a6fa5;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background: #3a5b8a;
+}
+.error {
+  color: red;
+  margin-top: .5rem;
+}
+.hidden {
+  display: none;
+}
+.grid {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.card-btn {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  font-weight: bold;
+  color: #4a6fa5;
+}
+.card-btn:hover {
+  background: #e6ecf5;
+}
+.back {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  color: #e74c3c;
+}
+</style>
+</head>
+<body>
+<header><h1>Prueba de Lenguaje</h1></header>
+<main class="card">
+  <form id="quiz">
+    <ol>
+      <li>Sinónimo de "rápido":<br>
+        <input type="radio" name="q1" value="1"> veloz<br>
+        <input type="radio" name="q1" value="0"> lento<br>
+        <input type="radio" name="q1" value="0"> torpe<br>
+      </li>
+      <li>Antónimo de "grande":<br>
+        <input type="radio" name="q2" value="1"> pequeño<br>
+        <input type="radio" name="q2" value="0"> enorme<br>
+        <input type="radio" name="q2" value="0"> amplio<br>
+      </li>
+      <li>La palabra "mar" es:<br>
+        <input type="radio" name="q3" value="1"> sustantivo<br>
+        <input type="radio" name="q3" value="0"> verbo<br>
+        <input type="radio" name="q3" value="0"> adjetivo<br>
+      </li>
+      <li>¿Cuál es un adjetivo?<br>
+        <input type="radio" name="q4" value="1"> hermoso<br>
+        <input type="radio" name="q4" value="0"> correr<br>
+        <input type="radio" name="q4" value="0"> ella<br>
+      </li>
+      <li>¿Cuál es un verbo?<br>
+        <input type="radio" name="q5" value="1"> saltar<br>
+        <input type="radio" name="q5" value="0"> azul<br>
+        <input type="radio" name="q5" value="0"> libro<br>
+      </li>
+    </ol>
+    <button type="submit">Finalizar</button>
+  </form>
+  <p id="resultado" class="hidden"></p>
+  <a href="materias.html" class="back">Volver</a>
+</main>
+<script>
+  document.getElementById("quiz").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    let score = 0;
+    document.querySelectorAll('input[type="radio"]:checked').forEach(r=> score += Number(r.value));
+    const res = document.getElementById("resultado");
+    res.textContent = `Respuestas: ${score} de 5`;
+    res.classList.remove("hidden");
+  });
+</script>
+</body>
+</html>

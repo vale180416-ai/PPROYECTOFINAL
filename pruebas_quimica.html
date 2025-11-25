@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba de Química</title>
+<style>
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #333;
+  text-align: center;
+}
+header {
+  background: #4a6fa5;
+  padding: 1rem;
+  color: white;
+}
+.card {
+  background: white;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+button {
+  background: #4a6fa5;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background: #3a5b8a;
+}
+.error {
+  color: red;
+  margin-top: .5rem;
+}
+.hidden {
+  display: none;
+}
+.grid {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.card-btn {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  font-weight: bold;
+  color: #4a6fa5;
+}
+.card-btn:hover {
+  background: #e6ecf5;
+}
+.back {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  color: #e74c3c;
+}
+</style>
+</head>
+<body>
+<header><h1>Prueba de Química</h1></header>
+<main class="card">
+  <form id="quiz">
+    <ol>
+      <li>El agua está formada por:<br>
+        <input type="radio" name="q1" value="1"> H₂O<br>
+        <input type="radio" name="q1" value="0"> CO₂<br>
+        <input type="radio" name="q1" value="0"> O₂<br>
+      </li>
+      <li>El número atómico indica:<br>
+        <input type="radio" name="q2" value="1"> Protones<br>
+        <input type="radio" name="q2" value="0"> Neutrones<br>
+        <input type="radio" name="q2" value="0"> Electrones<br>
+      </li>
+      <li>La fórmula de la sal común es:<br>
+        <input type="radio" name="q3" value="1"> NaCl<br>
+        <input type="radio" name="q3" value="0"> KCl<br>
+        <input type="radio" name="q3" value="0"> CaCO₃<br>
+      </li>
+      <li>Estado de la materia con volumen fijo pero forma variable:<br>
+        <input type="radio" name="q4" value="1"> Líquido<br>
+        <input type="radio" name="q4" value="0"> Sólido<br>
+        <input type="radio" name="q4" value="0"> Gas<br>
+      </li>
+      <li>El pH menor a 7 indica:<br>
+        <input type="radio" name="q5" value="1"> Ácido<br>
+        <input type="radio" name="q5" value="0"> Base<br>
+        <input type="radio" name="q5" value="0"> Neutro<br>
+      </li>
+    </ol>
+    <button type="submit">Finalizar</button>
+  </form>
+  <p id="resultado" class="hidden"></p>
+  <a href="materias.html" class="back">Volver</a>
+</main>
+<script>
+  document.getElementById("quiz").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    let score = 0;
+    document.querySelectorAll('input[type="radio"]:checked').forEach(r=> score += Number(r.value));
+    const res = document.getElementById("resultado");
+    res.textContent = `Respuestas: ${score} de 5`;
+    res.classList.remove("hidden");
+  });
+</script>
+</body>
+</html>
