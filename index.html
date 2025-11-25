@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Evaluaciones</title>
+  <style>
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #333;
+  text-align: center;
+}
+header {
+  background: #4a6fa5;
+  padding: 1rem;
+  color: white;
+}
+.card {
+  background: white;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+button {
+  background: #4a6fa5;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background: #3a5b8a;
+}
+.error {
+  color: red;
+  margin-top: .5rem;
+}
+.hidden {
+  display: none;
+}
+.grid {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.card-btn {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  font-weight: bold;
+  color: #4a6fa5;
+}
+.card-btn:hover {
+  background: #e6ecf5;
+}
+.back {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  color: #e74c3c;
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Sistema de Evaluaciones</h1>
+  </header>
+
+  <main class="card">
+    <h2>Acceso</h2>
+    <p>Ingresa tu PIN para acceder</p>
+
+    <form id="loginForm">
+      <input type="password" id="pin" placeholder="PIN" required />
+      <button type="submit">Ingresar</button>
+      <p id="error" class="error hidden">PIN incorrecto</p>
+    </form>
+  </main>
+
+  <script>
+    const validPins = {
+      "1234": "materias.html", // alumno 1
+      "5678": "materias.html", // alumno 2
+    };
+
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pin = document.getElementById("pin").value;
+      const error = document.getElementById("error");
+
+      if (validPins[pin]) {
+        window.location.href = validPins[pin];
+      } else {
+        error.classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
